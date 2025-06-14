@@ -1,0 +1,57 @@
+/* Variabler */
+:root {
+    --primary: #2a5b8c;
+    --secondary: #4a9d8f;
+    --accent: #ff7b54;
+    --light: #f8f9fa;
+    --dark: #2d3748;
+    --safe: #5cb85c;
+    --warning: #f0ad4e;
+    --danger: #d9534f;
+    --transition: all 0.3s ease;
+}
+
+/* Grunnleggende stil */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header-stiler */
+header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ... (Resten av CSS-en fra tidligere) ... */
+
+/* Responsivt design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* ... (Andre responsive justeringer) ... */
+}

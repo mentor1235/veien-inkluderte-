@@ -1,0 +1,73 @@
+// SOS-knapp funksjonalitet
+document.getElementById('sosBtn').addEventListener('click', function() {
+    if (confirm('Trenger du nødassistanse? Vi kan kontakte krisesenter eller politi på dine vegne.')) {
+        alert('Nødmelding sendt! En representant vil kontakte deg umiddelbart.');
+        
+        // Visuell feedback
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        this.style.backgroundColor = '#5cb85c';
+        
+        setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-life-ring"></i>';
+                this.style.backgroundColor = '';
+            }, 2000);
+        }, 1500);
+    }
+});
+
+// Språkbryter
+const langButtons = document.querySelectorAll('.lang-btn');
+langButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        langButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        alert(`Språk endret til: ${this.textContent}`);
+    });
+});
+
+// Navigasjonsaktiv tilstand
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// CV-bygger funksjonalitet (eksempel)
+class CVBuilder {
+    constructor() {
+        this.sections = {
+            personalia: {},
+            arbeidserfaring: [],
+            utdanning: [],
+            ferdigheter: []
+        };
+    }
+
+    addPersonalia(name, email, phone) {
+        this.sections.personalia = { name, email, phone };
+    }
+
+    addWorkExperience(title, company, period) {
+        this.sections.arbeidserfaring.push({ title, company, period });
+    }
+
+    generateCV() {
+        // Generer HTML for CV-en
+        let cvHTML = `<div class="cv">
+                        <h2>${this.sections.personalia.name}</h2>
+                        <p>${this.sections.personalia.email} | ${this.sections.personalia.phone}</p>`;
+        
+        // Legg til arbeidserfaring
+        cvHTML += '<h3>Arbeidserfaring</h3><ul>';
+        this.sections.arbeidserfaring.forEach(job => {
+            cvHTML += `<li><strong>${job.title}</strong> hos ${job.company} (${job.period})</li>`;
+        });
+        
+        return cvHTML + '</ul></div>';
+    }
+}
